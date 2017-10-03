@@ -1,0 +1,16 @@
+ulimit -Sn 512
+/usr/bin/mixerctl monitor.master=5,5
+/usr/X11R6/bin/xmodmap -e 'keycode 107 = BackSpace'
+case "$#" in
+0)
+  exec sh /etc/X11/xinit/xinitrc
+  ;;
+*)
+  session="$1"
+  shift
+  exec "$session" "$@"
+ ;;
+esac
+
+# NOTREACHED
+ exec /usr/X11R6/bin/xterm
