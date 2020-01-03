@@ -42,11 +42,19 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+
+# Split in horizontal orientation
+bindsym $mod+minus split h;exec notify-send 'split horizontally'
+
+# Split in vertical orientation
+bindsym $mod+bar split v;exec notify-send 'split vertically'
+
+
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+h focus left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -55,10 +63,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -67,10 +75,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+#bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+#bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -179,20 +187,21 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 exec --no-startup-id "setxkbmap -layout latam"
+exec --no-startup-id "klipper"
 exec_always pa-applet
 exec_always nm-applet
 
-exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome-stable'
-exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/emacs'
-exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/amarok'
+exec --no-startup-id i3-msg 'workspace 1; exec firefox'
+exec --no-startup-id i3-msg 'workspace 2; exec emacs'
+exec --no-startup-id i3-msg 'workspace 3; exec clementine'
 exec --no-startup-id qbittorrent
 
 assign [class="Firefox"] 1
 assign [class="Emacs"] 2
-assign [class="Amarok"] 3
+assign [class="clementine"] 3
 assign [class="qBittorrent"] 10
 assign [class="Google-chrome" instance="google-chrome"] 1
 
 focus_follows_mouse no
 for_window [class="^.*"] border pixel 0
-for_window [class="Google-chrome"] focus
+for_window [class="firefox"] focus
