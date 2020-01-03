@@ -17,10 +17,14 @@ fi
 unclutter -idle 2 &
 
 #exec gnome-session
-exec startkde
+#exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
 #exec xterm
 
 ~/.fehbg &
-#exec i3
+xset dpms 0 0 0
+xset -dpms
+xset s off
+setterm -blank 0
+exec i3
